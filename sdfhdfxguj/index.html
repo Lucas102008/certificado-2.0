@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Certificado</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   
+    <form id="certificateForm">
+        <label for="name"></label>
+        <input type="text" placeholder="nome" id="name" required><br>
+
+        <label for="course"></label>
+        <input type="text" placeholder="nome do curso" id="course" required><br>
+
+        <label for="duration"></label>
+        <input type="text" placeholder="duração do curso" id="duration" required><br>
+
+        <label for="date"></label>
+        <input type="date" placeholder="data de nascimento" id="date" required><br><br>
+
+        <button type="submit">Gerar Certificado</button>
+    </form>
+
+    <div id="certificate" class="certificate">
+        <center>
+        <h2>Certificado de Conclusão</h2>
+        <br><br><br>
+        <p>Certificamos que <span id="certName"></span> concluiu o curso de especialização em <span id="certCourse"></span> demostrou muito esforço e dedicação em seu curso que teve duração de <span id="certDuration"></span>.</p>
+        <p>Data de Conclusão: <span id="certDate"></span></p>
+        <br><br><br>
+        <p class="assinatura">ass:neymar jr</p>
+    </center>
+    </div>
+
+    <script>
+        document.getElementById('certificateForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            
+            var name = document.getElementById('name').value;
+            var course = document.getElementById('course').value;
+            var duration = document.getElementById('duration').value;
+            var date = document.getElementById('date').value;
+
+            
+            document.getElementById('certName').textContent = name;
+            document.getElementById('certCourse').textContent = course;
+            document.getElementById('certDuration').textContent = duration;
+            document.getElementById('certDate').textContent = new Date(date).toLocaleDateString('pt-BR');
+
+            
+            document.getElementById('certificate').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
